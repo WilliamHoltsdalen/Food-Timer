@@ -1,8 +1,7 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:food_timer_app/assets.dart';
 import 'package:food_timer_app/functions.dart';
-import 'package:food_timer_app/homePage.dart';
+import 'package:food_timer_app/home_page.dart';
 import 'package:food_timer_app/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
@@ -10,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class EditPage extends StatefulWidget {
   const EditPage({Key? key, required this.timer}) : super(key: key);
+  // ignore: prefer_typing_uninitialized_variables
   final timer;
 
   @override
@@ -66,7 +66,7 @@ class _EditPage extends State<EditPage> {
       context,
       PageTransition(
         type: PageTransitionType.fade,
-        child: MyHomePage(),
+        child: const MyHomePage(),
       ),
     );
   }
@@ -78,7 +78,6 @@ class _EditPage extends State<EditPage> {
     timerList = _settings.getStringList("timers")!;
 
     if (timerList.contains(title)) {
-      print("removing");
       await _settings.remove(title);
       timerList.remove(title);
       await _settings.setStringList("timers", timerList);
@@ -93,7 +92,9 @@ class _EditPage extends State<EditPage> {
     goToHomePage();
   }
 
+  @override
   void initState() {
+    super.initState();
     loadColor();
     oldTimerTitle = title;
   }
@@ -304,7 +305,7 @@ class _EditPage extends State<EditPage> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 30),
+                          margin: const EdgeInsets.only(top: 30),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[

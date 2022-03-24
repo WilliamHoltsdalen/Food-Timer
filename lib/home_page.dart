@@ -66,7 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return true;
   }
 
+  @override
   void initState() {
+    super.initState();
     loadColor();
     getTimers();
     getUserName();

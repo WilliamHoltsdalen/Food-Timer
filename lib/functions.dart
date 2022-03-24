@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:food_timer_app/homePage.dart';
-import 'package:food_timer_app/settingsPage.dart';
+import 'package:food_timer_app/home_page.dart';
+import 'package:food_timer_app/settings_page.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'addNewPage.dart';
+import 'add_new_page.dart';
 import 'assets.dart';
 
 Color returnColor = Colors.black;
@@ -40,7 +40,6 @@ Color getColor(String color) {
 void setUserName(String name) async {
   final _settings = await SharedPreferences.getInstance();
   await _settings.setString("username", name);
-  print(name);
 }
 
 void setThemeColor(String newColor) async {
@@ -78,7 +77,7 @@ Future<bool> newTimerEntry(
 logTimerExecution(String title, String duration) async {
   final _settings = await SharedPreferences.getInstance();
   List<String> logList = [];
-  final now = new DateTime.now();
+  final now = DateTime.now();
   String dateAndTime = DateFormat("MMMd").add_Hm().format(now);
   // print(dateAndTime);
 
@@ -161,7 +160,7 @@ List<Widget> bottomNavBarItems(pageType, BuildContext buildContext, widget) {
         48,
         greyColor,
         buildContext,
-        MyHomePage(),
+        const MyHomePage(),
         false,
       ),
       bottomNavBarItem(
@@ -191,7 +190,7 @@ List<Widget> bottomNavBarItems(pageType, BuildContext buildContext, widget) {
         48,
         greyColor,
         buildContext,
-        MyHomePage(),
+        const MyHomePage(),
         true,
       ),
       bottomNavBarItem(
@@ -222,7 +221,7 @@ List<Widget> bottomNavBarItems(pageType, BuildContext buildContext, widget) {
         48,
         greyColor,
         buildContext,
-        MyHomePage(),
+        const MyHomePage(),
         true,
       ),
       bottomNavBarItem(
@@ -240,7 +239,7 @@ List<Widget> bottomNavBarItems(pageType, BuildContext buildContext, widget) {
     return [
       bottomNavBarItem(
         widget,
-        Icons.close_rounded,
+        Icons.delete_outline_rounded,
         56,
         cancelColor,
         buildContext,
@@ -254,7 +253,7 @@ List<Widget> bottomNavBarItems(pageType, BuildContext buildContext, widget) {
         48,
         greyColor,
         buildContext,
-        MyHomePage(),
+        const MyHomePage(),
         true,
       ),
       bottomNavBarItem(
@@ -285,7 +284,7 @@ List<Widget> bottomNavBarItems(pageType, BuildContext buildContext, widget) {
         48,
         greyColor,
         buildContext,
-        MyHomePage(),
+        const MyHomePage(),
         true,
       ),
       bottomNavBarItem(
@@ -306,13 +305,9 @@ List<Widget> bottomNavBarItems(pageType, BuildContext buildContext, widget) {
         48,
         greyColor,
         buildContext,
-        MyHomePage(),
+        const MyHomePage(),
         true,
       ),
     ];
   }
-}
-
-void printstate(number) {
-  print("Number is $number");
 }

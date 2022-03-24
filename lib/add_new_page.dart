@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_timer_app/assets.dart';
 import 'package:food_timer_app/functions.dart';
-import 'package:food_timer_app/homePage.dart';
+import 'package:food_timer_app/home_page.dart';
 import 'package:food_timer_app/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
@@ -59,7 +59,7 @@ class _AddNewPageState extends State<AddNewPage> {
         context,
         PageTransition(
           type: PageTransitionType.fade,
-          child: MyHomePage(),
+          child: const MyHomePage(),
         ));
   }
 
@@ -69,7 +69,9 @@ class _AddNewPageState extends State<AddNewPage> {
     goToHomePage();
   }
 
+  @override
   void initState() {
+    super.initState();
     loadColor();
   }
 

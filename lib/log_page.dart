@@ -36,10 +36,11 @@ class _LogPageState extends State<LogPage> {
       _settings.setStringList("logs", []);
       logs = _settings.getStringList("logs")!;
     }
-    print(logs);
   }
 
+  @override
   void initState() {
+    super.initState();
     loadColor();
     getTimerLogs();
   }

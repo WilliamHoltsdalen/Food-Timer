@@ -8,7 +8,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'functions.dart';
-import 'logPage.dart';
+import 'log_page.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -54,7 +54,9 @@ class _SettingsPageState extends State<SettingsPage> {
     });
   }
 
+  @override
   void initState() {
+    super.initState();
     loadColor();
     getUserName();
   }
@@ -358,7 +360,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 30),
+                          margin: const EdgeInsets.only(top: 30),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
