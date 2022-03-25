@@ -160,7 +160,7 @@ class _AddNewPageState extends State<AddNewPage> {
                             child: TextField(
                               controller: tempController,
                               decoration: InputDecoration(
-                                labelText: "Temp",
+                                labelText: "Temperature",
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
@@ -184,7 +184,7 @@ class _AddNewPageState extends State<AddNewPage> {
                             child: TextField(
                               controller: minutesController,
                               decoration: InputDecoration(
-                                labelText: "Min",
+                                labelText: "Minutes",
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
@@ -227,8 +227,12 @@ class _AddNewPageState extends State<AddNewPage> {
                       ),
                     ),
                   ),
-                  timerCard([title, imageURL, temp, minutes], primaryColor,
-                      false, context),
+                  timerCard(
+                    [title, imageURL, temp, minutes],
+                    primaryColor,
+                    false,
+                    context,
+                  ),
                 ],
               ),
 

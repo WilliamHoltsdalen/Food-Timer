@@ -88,6 +88,16 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
+                child: Text(
+                  "Customization",
+                  style: GoogleFonts.bitter(
+                    textStyle: const TextStyle(fontSize: 24, color: greyColor),
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 25, top: 25, right: 25),
+                height: 40,
                 child: Column(
                   children: <Widget>[
                     Row(
@@ -97,15 +107,21 @@ class _SettingsPageState extends State<SettingsPage> {
                           "Color theme",
                           style: GoogleFonts.bitter(
                             textStyle:
-                                const TextStyle(fontSize: 24, color: greyColor),
+                                const TextStyle(fontSize: 20, color: greyColor),
                           ),
                         ),
                         Container(
                           height: 30,
                           width: 30,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: greenColor,
+                            border: (() {
+                              if (primaryColor == greenColor) {
+                                return Border.all(
+                                    color: darkGreyColor, width: 2.5);
+                              }
+                            }()),
                           ),
                           child: InkWell(
                             onTap: () => setState(
@@ -119,9 +135,15 @@ class _SettingsPageState extends State<SettingsPage> {
                         Container(
                           height: 30,
                           width: 30,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: orangeColor,
+                            border: (() {
+                              if (primaryColor == orangeColor) {
+                                return Border.all(
+                                    color: darkGreyColor, width: 2.5);
+                              }
+                            }()),
                           ),
                           child: InkWell(
                             onTap: () => setState(
@@ -135,9 +157,15 @@ class _SettingsPageState extends State<SettingsPage> {
                         Container(
                           height: 30,
                           width: 30,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: purpleColor,
+                            border: (() {
+                              if (primaryColor == purpleColor) {
+                                return Border.all(
+                                    color: darkGreyColor, width: 2.5);
+                              }
+                            }()),
                           ),
                           child: InkWell(
                             onTap: () => setState(
@@ -151,9 +179,15 @@ class _SettingsPageState extends State<SettingsPage> {
                         Container(
                           height: 30,
                           width: 30,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: blueColor,
+                            border: (() {
+                              if (primaryColor == blueColor) {
+                                return Border.all(
+                                    color: darkGreyColor, width: 2.5);
+                              }
+                            }()),
                           ),
                           child: InkWell(
                             onTap: () => setState(
@@ -170,7 +204,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 25, top: 35, right: 25),
+                margin: const EdgeInsets.only(left: 25, top: 15, right: 25),
                 child: TextField(
                   controller: userNameController,
                   decoration: InputDecoration(
@@ -198,10 +232,28 @@ class _SettingsPageState extends State<SettingsPage> {
                   },
                 ),
               ),
+              Container(
+                margin: const EdgeInsets.only(left: 25, top: 35, right: 25),
+                height: 40,
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: greyColor,
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Text(
+                  "Miscellaneous",
+                  style: GoogleFonts.bitter(
+                    textStyle: const TextStyle(fontSize: 24, color: greyColor),
+                  ),
+                ),
+              ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  margin: const EdgeInsets.only(left: 25, top: 35, right: 25),
+                  margin: const EdgeInsets.only(left: 25, top: 25, right: 25),
                   child: OutlinedButton.icon(
                     onPressed: () {
                       Navigator.pushReplacement(
@@ -234,15 +286,33 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
               ),
+              Container(
+                margin: const EdgeInsets.only(left: 25, top: 35, right: 25),
+                height: 40,
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: greyColor,
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Text(
+                  "Danger Zone",
+                  style: GoogleFonts.bitter(
+                    textStyle: const TextStyle(fontSize: 24, color: greyColor),
+                  ),
+                ),
+              ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  margin: const EdgeInsets.only(left: 25, top: 35, right: 25),
+                  margin: const EdgeInsets.only(left: 25, top: 25, right: 25),
                   child: OutlinedButton.icon(
                     onPressed: () {
                       setState(
                         () {
-                          deleteAllSettings();
+                          // deleteAllSettings();
                         },
                       );
                       Navigator.pushReplacement(
@@ -279,12 +349,12 @@ class _SettingsPageState extends State<SettingsPage> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  margin: const EdgeInsets.only(left: 25, top: 35, right: 25),
+                  margin: const EdgeInsets.only(left: 25, top: 12.5, right: 25),
                   child: OutlinedButton.icon(
                     onPressed: () {
                       setState(
                         () {
-                          deleteAllTimers();
+                          // deleteAllTimers();
                         },
                       );
                     },
