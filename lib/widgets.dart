@@ -162,7 +162,7 @@ FractionallySizedBox timerCard(List<dynamic> timer, Color _primaryColor,
                                               fontWeight: FontWeight.w700),
                                         ),
                                       ),
-                                      const TextSpan(text: "°C")
+                                      const TextSpan(text: "°")
                                     ]),
                               ),
                               decoration: const BoxDecoration(

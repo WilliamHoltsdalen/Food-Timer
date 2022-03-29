@@ -307,12 +307,13 @@ class _SettingsPageState extends State<SettingsPage> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
+                  width: 240,
                   margin: const EdgeInsets.only(left: 25, top: 25, right: 25),
                   child: OutlinedButton.icon(
                     onPressed: () {
                       setState(
                         () {
-                          // deleteAllSettings();
+                          deleteAllSettings();
                         },
                       );
                       Navigator.pushReplacement(
@@ -326,58 +327,109 @@ class _SettingsPageState extends State<SettingsPage> {
                     label: const Text("Clear settings"),
                     icon: const Icon(Icons.delete, color: cancelColor),
                     style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        side: const BorderSide(
-                          color: greyColor,
-                          width: 1,
-                        ),
-                        textStyle: GoogleFonts.bitter(
-                          textStyle: const TextStyle(fontSize: 24),
-                        ),
-                        padding: const EdgeInsets.only(
-                          left: 15,
-                          top: 10,
-                          right: 15,
-                          bottom: 10,
-                        ),
-                        primary: greyColor),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      side: const BorderSide(
+                        color: greyColor,
+                        width: 1,
+                      ),
+                      textStyle: GoogleFonts.bitter(
+                        textStyle: const TextStyle(fontSize: 24),
+                      ),
+                      padding: const EdgeInsets.only(
+                        left: 15,
+                        top: 10,
+                        right: 15,
+                        bottom: 10,
+                      ),
+                      primary: greyColor,
+                      alignment: Alignment.centerLeft,
+                    ),
                   ),
                 ),
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
+                  width: 240,
+                  margin: const EdgeInsets.only(left: 25, top: 12.5),
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      setState(
+                        () {
+                          deleteAllLogs();
+                        },
+                      );
+                      Navigator.pushReplacement(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: const SettingsPage(),
+                        ),
+                      );
+                    },
+                    label: const Text("Clear logs"),
+                    icon: const Icon(Icons.delete, color: cancelColor),
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      side: const BorderSide(
+                        color: greyColor,
+                        width: 1,
+                      ),
+                      textStyle: GoogleFonts.bitter(
+                        textStyle: const TextStyle(fontSize: 24),
+                      ),
+                      padding: const EdgeInsets.only(
+                        left: 15,
+                        top: 10,
+                        right: 15,
+                        bottom: 10,
+                      ),
+                      primary: greyColor,
+                      alignment: Alignment.centerLeft,
+                    ),
+                  ),
+                ),
+              ),
+
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  width: 240,
                   margin: const EdgeInsets.only(left: 25, top: 12.5, right: 25),
                   child: OutlinedButton.icon(
                     onPressed: () {
                       setState(
                         () {
-                          // deleteAllTimers();
+                          deleteAllTimers();
                         },
                       );
                     },
                     label: const Text("Remove timers"),
                     icon: const Icon(Icons.delete, color: cancelColor),
                     style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        side: const BorderSide(
-                          color: greyColor,
-                          width: 1,
-                        ),
-                        textStyle: GoogleFonts.bitter(
-                          textStyle: const TextStyle(fontSize: 24),
-                        ),
-                        padding: const EdgeInsets.only(
-                          left: 15,
-                          top: 10,
-                          right: 15,
-                          bottom: 10,
-                        ),
-                        primary: greyColor),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      side: const BorderSide(
+                        color: greyColor,
+                        width: 1,
+                      ),
+                      textStyle: GoogleFonts.bitter(
+                        textStyle: const TextStyle(fontSize: 24),
+                      ),
+                      padding: const EdgeInsets.only(
+                        left: 15,
+                        top: 10,
+                        right: 15,
+                        bottom: 10,
+                      ),
+                      primary: greyColor,
+                      alignment: Alignment.centerLeft,
+                    ),
                   ),
                 ),
               ),

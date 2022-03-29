@@ -116,6 +116,11 @@ void deleteAllTimers() async {
   await _settings.remove("timers");
 }
 
+void deleteAllLogs() async {
+  final _settings = await SharedPreferences.getInstance();
+  await _settings.setStringList("logs", []);
+}
+
 Widget bottomNavBarItem(widget, IconData icon, double iconSize, Color iconColor,
     BuildContext buildContext, StatefulWidget page, bool enabledStatus,
     {String? functionParameter}) {
