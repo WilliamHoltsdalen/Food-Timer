@@ -313,7 +313,8 @@ class _SettingsPageState extends State<SettingsPage> {
                     onPressed: () {
                       setState(
                         () {
-                          deleteAllSettings();
+                          // deleteAllSettings();
+                          toggleDarkCover();
                         },
                       );
                       Navigator.pushReplacement(
@@ -358,7 +359,8 @@ class _SettingsPageState extends State<SettingsPage> {
                     onPressed: () {
                       setState(
                         () {
-                          deleteAllLogs();
+                          // deleteAllLogs();
+                          toggleDarkCover();
                         },
                       );
                       Navigator.pushReplacement(
@@ -404,7 +406,8 @@ class _SettingsPageState extends State<SettingsPage> {
                     onPressed: () {
                       setState(
                         () {
-                          deleteAllTimers();
+                          // deleteAllTimers();
+                          toggleDarkCover();
                         },
                       );
                     },
