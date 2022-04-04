@@ -1,7 +1,10 @@
 // ignore_for_file: file_names
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:food_timer_app/assets.dart';
+import 'package:food_timer_app/home_page.dart';
 import 'package:food_timer_app/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
@@ -20,6 +23,7 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   String rVal = "";
   bool darkCover = false;
+  String darkCoverPrompt = "";
 
   late String userName;
   TextEditingController userNameController =
@@ -48,8 +52,17 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   // Toggle on or off the black, low opacity, filter over content.
-  toggleDarkCover() {
+  toggleDarkCover(String type) {
     setState(() {
+      if (type == "Clear settings") {
+        darkCoverPrompt = "Do you wish to clear the settings?";
+      } else if (type == "Clear logs") {
+        darkCoverPrompt = "Do you wish to clear the logs?";
+      } else if (type == "Remove timers") {
+        darkCoverPrompt = "Do you wish to remove all timers?";
+      } else {
+        darkCoverPrompt = "";
+      }
       darkCover = !darkCover;
     });
   }
@@ -314,15 +327,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       setState(
                         () {
                           // deleteAllSettings();
-                          toggleDarkCover();
+                          toggleDarkCover("Clear settings");
                         },
-                      );
-                      Navigator.pushReplacement(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.fade,
-                          child: const SettingsPage(),
-                        ),
                       );
                     },
                     label: const Text("Clear settings"),
@@ -360,15 +366,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       setState(
                         () {
                           // deleteAllLogs();
-                          toggleDarkCover();
+                          toggleDarkCover("Clear logs");
                         },
-                      );
-                      Navigator.pushReplacement(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.fade,
-                          child: const SettingsPage(),
-                        ),
                       );
                     },
                     label: const Text("Clear logs"),
@@ -406,8 +405,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     onPressed: () {
                       setState(
                         () {
-                          // deleteAllTimers();
-                          toggleDarkCover();
+                          toggleDarkCover("Remove timers");
                         },
                       );
                     },
@@ -456,7 +454,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 heightFactor: 1.0,
                 widthFactor: 1.0,
                 child: GestureDetector(
-                  onTap: () => {toggleDarkCover()},
+                  onTap: () => {toggleDarkCover("")},
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.5),
@@ -478,7 +476,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     child: Column(
                       children: <Widget>[
                         Text(
-                          "Do you want to remove this timer?",
+                          darkCoverPrompt,
                           style: GoogleFonts.bitter(
                             textStyle: const TextStyle(
                                 fontSize: 28, color: darkGreyColor),
@@ -491,7 +489,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             children: <Widget>[
                               OutlinedButton(
                                 onPressed: () {
-                                  toggleDarkCover();
+                                  toggleDarkCover("");
                                 },
                                 child: const Text("No"),
                                 style: OutlinedButton.styleFrom(
@@ -515,7 +513,26 @@ class _SettingsPageState extends State<SettingsPage> {
                                     primary: darkGreyColor),
                               ),
                               OutlinedButton(
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  if (darkCoverPrompt ==
+                                      "Do you wish to clear the settings?") {
+                                    await deleteAllSettings();
+                                  } else if (darkCoverPrompt ==
+                                      "Do you wish to clear the logs?") {
+                                    await deleteAllLogs();
+                                  } else if (darkCoverPrompt ==
+                                      "Do you wish to remove all timers?") {
+                                    await deleteAllTimers();
+                                  }
+                                  setState(() {});
+                                  Navigator.pushReplacement(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: const SettingsPage(),
+                                    ),
+                                  );
+                                },
                                 child: const Text("Yes"),
                                 style: OutlinedButton.styleFrom(
                                     fixedSize: const Size(135, 55),

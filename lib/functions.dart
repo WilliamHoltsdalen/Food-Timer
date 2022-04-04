@@ -101,24 +101,27 @@ timerMinutesIntChecker(String minutes) {
   }
 }
 
-void deleteAllSettings() async {
+Future<bool> deleteAllSettings() async {
   final _settings = await SharedPreferences.getInstance();
   await _settings.setString("username", "User name");
   await _settings.setString("color", "green");
+  return true;
 }
 
-void deleteAllTimers() async {
+Future<bool> deleteAllTimers() async {
   final _settings = await SharedPreferences.getInstance();
   List<String> timerList = _settings.getStringList("timers")!;
   for (int i = 0; i < timerList.length; i++) {
     await _settings.remove(timerList[i]);
   }
   await _settings.remove("timers");
+  return true;
 }
 
-void deleteAllLogs() async {
+Future<bool> deleteAllLogs() async {
   final _settings = await SharedPreferences.getInstance();
   await _settings.setStringList("logs", []);
+  return true;
 }
 
 Widget bottomNavBarItem(widget, IconData icon, double iconSize, Color iconColor,
